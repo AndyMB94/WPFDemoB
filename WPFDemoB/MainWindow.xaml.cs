@@ -14,11 +14,11 @@ namespace WPFDemoB
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    /// asdf
     public partial class MainWindow : Window
     {
         //Mi primer comentario Mallcco
         //Segundo comentario Mallcco
+        //Tercer comentario Mallcco
         public MainWindow()
         {
             InitializeComponent();
