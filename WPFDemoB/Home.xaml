@@ -1,0 +1,185 @@
+﻿<Window x:Class="WPFDemoB.Home"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFDemoB"
+        mc:Ignorable="d"
+        Title="Sistema de Transporte - Menú Principal" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen"
+        MinHeight="400" MinWidth="600">
+
+    <Grid Background="LightGray">
+        <!-- Barra superior -->
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" Background="DarkBlue" Height="60">
+                <Grid>
+                    <TextBlock Text="SISTEMA DE GESTIÓN DE TRANSPORTE" 
+                              FontSize="18" 
+                              FontWeight="Bold" 
+                              Foreground="White" 
+                              HorizontalAlignment="Center" 
+                              VerticalAlignment="Center"
+                              Margin="10"/>
+
+                    <Button x:Name="btnCerrarSesion" 
+                           Content="Cerrar Sesión" 
+                           HorizontalAlignment="Right" 
+                           VerticalAlignment="Center"
+                           Margin="20"
+                           Padding="15,5"
+                           Background="Red"
+                           Foreground="White"
+                           FontWeight="Bold"
+                           Click="btnCerrarSesion_Click"/>
+                </Grid>
+            </StackPanel>
+
+            <!-- Contenido principal con scroll -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                         HorizontalScrollBarVisibility="Auto">
+                <Grid>
+                    <StackPanel HorizontalAlignment="Center" 
+                               VerticalAlignment="Top"
+                               Width="Auto"
+                               MaxWidth="800"
+                               Margin="20">
+
+                        <TextBlock Text="MENÚ PRINCIPAL" 
+                                  FontSize="24" 
+                                  FontWeight="Bold" 
+                                  HorizontalAlignment="Center" 
+                                  Margin="0,20,0,30"
+                                  Foreground="DarkBlue"/>
+
+                        <!-- Grid responsive para las secciones -->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" MinWidth="250"/>
+                                <ColumnDefinition Width="*" MinWidth="250"/>
+                                <ColumnDefinition Width="*" MinWidth="250"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- OPERACIONES -->
+                            <GroupBox Header="OPERACIONES" 
+                                     FontSize="14" 
+                                     FontWeight="Bold" 
+                                     Margin="10"
+                                     Padding="15"
+                                     Background="White"
+                                     Grid.Column="0">
+                                <StackPanel>
+                                    <Button x:Name="btnIngresos" 
+                                           Content="a. Ingresos" 
+                                           Height="35" 
+                                           Margin="0,5"
+                                           Background="LightBlue"
+                                           FontSize="12"
+                                           HorizontalAlignment="Stretch"
+                                           Click="btnIngresos_Click"/>
+
+                                    <Button x:Name="btnSalida" 
+                                           Content="b. Salida" 
+                                           Height="35" 
+                                           Margin="0,5"
+                                           Background="LightBlue"
+                                           FontSize="12"
+                                           HorizontalAlignment="Stretch"/>
+                                </StackPanel>
+                            </GroupBox>
+
+                            <!-- MANTENIMIENTOS -->
+                            <GroupBox Header="MANTENIMIENTOS" 
+                                     FontSize="14" 
+                                     FontWeight="Bold" 
+                                     Margin="10"
+                                     Padding="15"
+                                     Background="White"
+                                     Grid.Column="1">
+                                <StackPanel>
+                                    <Button x:Name="btnConductores" 
+                                           Content="a. Conductores" 
+                                           Height="35" 
+                                           Margin="0,5"
+                                           Background="LightGreen"
+                                           FontSize="12"
+                                           HorizontalAlignment="Stretch"
+                                           Click="btnConductores_Click"/>
+
+                                    <Button x:Name="btnTransportistas" 
+                                           Content="b. Transportistas" 
+                                           Height="35" 
+                                           Margin="0,5"
+                                           Background="LightGreen"
+                                           FontSize="12"
+                                           HorizontalAlignment="Stretch"/>
+
+                                    <Button x:Name="btnCamiones" 
+                                           Content="c. Camiones" 
+                                           Height="35" 
+                                           Margin="0,5"
+                                           Background="LightGreen"
+                                           FontSize="12"
+                                           HorizontalAlignment="Stretch"/>
+
+                                    <Button x:Name="btnProductos" 
+                                           Content="d. Productos" 
+                                           Height="35" 
+                                           Margin="0,5"
+                                           Background="LightGreen"
+                                           FontSize="12"
+                                           HorizontalAlignment="Stretch"/>
+                                </StackPanel>
+                            </GroupBox>
+
+                            <!-- REPORTES -->
+                            <GroupBox Header="REPORTES" 
+                                     FontSize="14" 
+                                     FontWeight="Bold" 
+                                     Margin="10"
+                                     Padding="15"
+                                     Background="White"
+                                     Grid.Column="2">
+                                <StackPanel>
+                                    <Button x:Name="btnReporteCargas" 
+                                           Content="a. Cargas" 
+                                           Height="35" 
+                                           Margin="0,5"
+                                           Background="LightYellow"
+                                           FontSize="12"
+                                           HorizontalAlignment="Stretch"/>
+
+                                    <Button x:Name="btnReporteIngresos" 
+                                           Content="b. Ingresos" 
+                                           Height="35" 
+                                           Margin="0,5"
+                                           Background="LightYellow"
+                                           FontSize="12"
+                                           HorizontalAlignment="Stretch"
+                                           Click="btnReporteIngresos_Click"/>
+
+                                    <Button x:Name="btnReporteSalidas" 
+                                           Content="c. Salidas" 
+                                           Height="35" 
+                                           Margin="0,5"
+                                           Background="LightYellow"
+                                           FontSize="12"
+                                           HorizontalAlignment="Stretch"/>
+                                </StackPanel>
+                            </GroupBox>
+                        </Grid>
+
+                        <!-- Información adicional -->
+                        <TextBlock Text="Selecciona una opción del menú para continuar" 
+                                  FontSize="12" 
+                                  HorizontalAlignment="Center" 
+                                  Margin="0,20,0,20"
+                                  Foreground="Gray"
+                                  FontStyle="Italic"/>
+
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,187 @@
+﻿<Window x:Class="WPFDemoB.Mantenimiento"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFDemoB"
+        mc:Ignorable="d"
+        Title="Mantenimiento - Conductores" Height="650" Width="900"
+        WindowStartupLocation="CenterScreen"
+        MinHeight="500" MinWidth="700">
+
+    <Grid Background="LightGray">
+        <!-- Barra superior -->
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" Background="DarkGreen" Height="50">
+                <TextBlock Text="MANTENIMIENTO DE CONDUCTORES" 
+                          FontSize="18" 
+                          FontWeight="Bold" 
+                          Foreground="White" 
+                          HorizontalAlignment="Center" 
+                          VerticalAlignment="Center"
+                          Margin="10"/>
+            </StackPanel>
+
+            <!-- Contenido principal con scroll -->
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Margin="20">
+
+                    <!-- FORMULARIO DE REGISTRO -->
+                    <GroupBox Header="REGISTRO DE NUEVO CONDUCTOR" 
+                             FontSize="14" 
+                             FontWeight="Bold" 
+                             Margin="0,10,0,20"
+                             Padding="20"
+                             Background="White">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Nombre Conductor -->
+                            <TextBlock Text="Nombre Conductor:" 
+                                      Grid.Row="0" Grid.Column="0"
+                                      VerticalAlignment="Center" 
+                                      Margin="0,10"/>
+                            <TextBox x:Name="txtNombreConductor" 
+                                    Grid.Row="0" Grid.Column="1"
+                                    Height="30" 
+                                    Margin="10,10,10,10"/>
+
+                            <!-- Licencia -->
+                            <TextBlock Text="Licencia:" 
+                                      Grid.Row="1" Grid.Column="0"
+                                      VerticalAlignment="Center" 
+                                      Margin="0,10"/>
+                            <TextBox x:Name="txtLicencia" 
+                                    Grid.Row="1" Grid.Column="1"
+                                    Height="30" 
+                                    Margin="10,10,10,10"/>
+
+                            <!-- Transporte -->
+                            <TextBlock Text="Transporte:" 
+                                      Grid.Row="2" Grid.Column="0"
+                                      VerticalAlignment="Center" 
+                                      Margin="0,10"/>
+                            <ComboBox x:Name="cmbTransporte" 
+                                     Grid.Row="2" Grid.Column="1"
+                                     Height="30" 
+                                     Margin="10,10,10,10">
+                                <ComboBoxItem Content="Camión"/>
+                                <ComboBoxItem Content="Tráiler"/>
+                                <ComboBoxItem Content="Furgón"/>
+                                <ComboBoxItem Content="Volquete"/>
+                                <ComboBoxItem Content="Cisterna"/>
+                            </ComboBox>
+
+                            <!-- Botones -->
+                            <StackPanel Grid.Row="3" Grid.ColumnSpan="3" 
+                                       Orientation="Horizontal" 
+                                       HorizontalAlignment="Center"
+                                       Margin="0,20,0,0">
+
+                                <Button x:Name="btnAgregarConductor" 
+                                       Content="Agregar Conductor" 
+                                       Height="35" 
+                                       Width="150"
+                                       Background="Green" 
+                                       Foreground="White" 
+                                       FontWeight="Bold"
+                                       Margin="10,0"
+                                       Click="btnAgregarConductor_Click"/>
+
+                                <Button x:Name="btnLimpiarFormulario" 
+                                       Content="Limpiar" 
+                                       Height="35" 
+                                       Width="100"
+                                       Background="Orange" 
+                                       Foreground="White" 
+                                       FontWeight="Bold"
+                                       Margin="10,0"
+                                       Click="btnLimpiarFormulario_Click"/>
+
+                                <Button x:Name="btnVolverHome" 
+                                       Content="Volver al Menú" 
+                                       Height="35" 
+                                       Width="120"
+                                       Background="Gray" 
+                                       Foreground="White" 
+                                       FontWeight="Bold"
+                                       Margin="10,0"
+                                       Click="btnVolverHome_Click"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </GroupBox>
+
+                    <!-- LISTA DE CONDUCTORES -->
+                    <GroupBox Header="LISTA DE CONDUCTORES REGISTRADOS" 
+                             FontSize="14" 
+                             FontWeight="Bold" 
+                             Margin="0,0,0,20"
+                             Padding="20"
+                             Background="White">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Información -->
+                            <TextBlock Grid.Row="0"
+                                      Text="Total de conductores registrados: 0" 
+                                      x:Name="lblTotalConductores"
+                                      FontSize="12" 
+                                      Margin="0,0,0,10"
+                                      Foreground="DarkBlue"/>
+
+                            <!-- DataGrid -->
+                            <DataGrid x:Name="dgConductores" 
+                                     Grid.Row="1"
+                                     Height="250"
+                                     AutoGenerateColumns="False"
+                                     CanUserAddRows="False"
+                                     CanUserDeleteRows="False"
+                                     IsReadOnly="True"
+                                     GridLinesVisibility="All"
+                                     HeadersVisibility="Column"
+                                     Background="White"
+                                     AlternatingRowBackground="LightBlue">
+
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="N°" 
+                                                       Binding="{Binding Id}" 
+                                                       Width="50"/>
+                                    <DataGridTextColumn Header="Nombre del Conductor" 
+                                                       Binding="{Binding Nombre}" 
+                                                       Width="*"/>
+                                    <DataGridTextColumn Header="Licencia" 
+                                                       Binding="{Binding Licencia}" 
+                                                       Width="150"/>
+                                    <DataGridTextColumn Header="Tipo de Transporte" 
+                                                       Binding="{Binding Transporte}" 
+                                                       Width="150"/>
+                                    <DataGridTextColumn Header="Fecha de Registro" 
+                                                       Binding="{Binding FechaRegistro, StringFormat=dd/MM/yyyy}" 
+                                                       Width="130"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                        </Grid>
+                    </GroupBox>
+
+                </StackPanel>
+            </ScrollViewer>
+        </DockPanel>
+    </Grid>
+</Window>

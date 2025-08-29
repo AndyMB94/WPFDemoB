@@ -5,8 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFDemoB"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Login" Height="300" Width="400"
+        WindowStartupLocation="CenterScreen">
 
+    <Grid Background="LightBlue">
+        <StackPanel HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   Width="250">
+
+            <!-- Título -->
+            <TextBlock Text="Iniciar Sesión" 
+                      FontSize="20" 
+                      FontWeight="Bold" 
+                      HorizontalAlignment="Center" 
+                      Margin="0,0,0,20"/>
+
+            <!-- Usuario -->
+            <TextBlock Text="Usuario:" Margin="0,0,0,5"/>
+            <TextBox x:Name="txtUsuario" 
+                    Height="30" 
+                    Margin="0,0,0,15"/>
+
+            <!-- Contraseña -->
+            <TextBlock Text="Contraseña:" Margin="0,0,0,5"/>
+            <PasswordBox x:Name="txtPassword" 
+                        Height="30" 
+                        Margin="0,0,0,20"/>
+
+            <!-- Botón -->
+            <Button x:Name="btnLogin" 
+                   Content="Ingresar" 
+                   Height="35" 
+                   Background="DodgerBlue" 
+                   Foreground="White" 
+                   FontWeight="Bold"
+                   Click="btnLogin_Click"/>
+
+        </StackPanel>
     </Grid>
 </Window>
